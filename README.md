@@ -18,10 +18,10 @@ cd ios && pod install
 
 ```tsx
 import {
-  searchCoodinate,
+  searchCoordinate,
   searchLocations,
   updatedLocationResultsListener,
-  Coodinate,
+  Coordinate,
   SearchLocationResultItem,
 } from 'react-native-mk-local-search';
 
@@ -29,7 +29,7 @@ import {
 
 export default function App() {
   const [results, setResults] = useState<SearchLocationResultItem[]>([]);
-  const [coodinate, setCoodinate] = useState<null | Coodinate>(null);
+  const [coordinate, setCoordinate] = useState<null | Coordinate>(null);
 
   useEffect(() => {
     // The results of searchLocations are passed to this listener.
@@ -50,15 +50,15 @@ export default function App() {
   const onItemPress = async (title: string, subtitle: string) => {
     try {
       // Get latitude and longitude from addresses and other queries.
-      let searchedCoodinate = await searchCoodinate(subtitle);
+      let searchedCoordinate = await searchCoordinate(subtitle);
 
-      if (!searchedCoodinate) {
-        searchedCoodinate = await searchCoodinate(`${title} ${subtitle}`);
+      if (!searchedCoordinate) {
+        searchedCoordinate = await searchCoordinate(`${title} ${subtitle}`);
       }
 
-      setCoodinate(searchedCoodinate);
+      setCoordinate(searchedCoordinate);
     } catch (e) {
-      // If coodinate is not found, error occurs with [Error: Coodinate is not found].
+      // If coordinate is not found, error occurs with [Error: Coordinate is not found].
       console.log(e);
     }
   };

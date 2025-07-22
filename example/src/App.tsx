@@ -8,8 +8,8 @@ import {
   View,
 } from 'react-native';
 import {
-  Coodinate,
-  searchCoodinate,
+  Coordinate,
+  searchCoordinate,
   SearchLocationResultItem,
   searchLocations,
   updatedLocationResultsListener,
@@ -17,7 +17,7 @@ import {
 
 export default function App() {
   const [results, setResults] = useState<SearchLocationResultItem[]>([]);
-  const [coodinate, setCoodinate] = useState<null | Coodinate>(null);
+  const [coordinate, setCoordinate] = useState<null | Coordinate>(null);
 
   useEffect(() => {
     const subscription = updatedLocationResultsListener((data) => {
@@ -35,15 +35,15 @@ export default function App() {
 
   const onItemPress = async (title: string, subtitle: string) => {
     try {
-      let searchedCoodinate = await searchCoodinate(subtitle);
+      let searchedCoordinate = await searchCoordinate(subtitle);
 
-      if (!searchedCoodinate) {
-        searchedCoodinate = await searchCoodinate(`${title} ${subtitle}`);
+      if (!searchedCoordinate) {
+        searchedCoordinate = await searchCoordinate(`${title} ${subtitle}`);
       }
 
-      setCoodinate(searchedCoodinate);
+      setCoordinate(searchedCoordinate);
     } catch (e) {
-      // If coodinate is not found, error occurs with [Error: Coodinate is not found].
+      // If coordinate is not found, error occurs with [Error: Coordinate is not found].
       console.log(e);
     }
   };

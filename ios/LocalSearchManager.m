@@ -4,7 +4,7 @@
 
 @interface RCT_EXTERN_MODULE(LocalSearchManager, RCTEventEmitter)
 RCT_EXTERN_METHOD(searchLocations:(NSString *)text)
-RCT_EXTERN_METHOD(searchCoodinate:(NSString *)query resolve:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject)
+RCT_EXTERN_METHOD(searchCoordinate:(NSString *)query resolve:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject)
 @end
 
 

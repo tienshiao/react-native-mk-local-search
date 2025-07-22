@@ -9,7 +9,7 @@ export type SearchLocationResultItem = {
   subtitle: string;
 };
 
-export type Coodinate = {
+export type Coordinate = {
   latitude: number;
   longitude: number;
 };
@@ -29,7 +29,7 @@ export const updatedLocationResultsListener = (
   return emitterSubscription;
 };
 
-export const searchCoodinate = async (query: string): Promise<Coodinate> => {
-  const result = await LocalSearchManager.searchCoodinate(query);
+export const searchCoordinate = async (query: string): Promise<Coordinate> => {
+  const result = await LocalSearchManager.searchCoordinate(query);
   return result;
 };
